@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import Anthropic from "@anthropic-ai/sdk";
 
+
 /**
  * The model we use for reviews. Sonnet is a good balance of speed and quality
  * for code review. Swap to a Haiku model if you want faster, cheaper reviews.
