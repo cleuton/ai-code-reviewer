@@ -1,0 +1,56 @@
+{
+  "name": "ai-code-reviewer",
+  "displayName": "AI Code Reviewer",
+  "description": "Review the selected code with Claude, right inside VS Code.",
+  "version": "0.1.0",
+  "publisher": "ai-engineer-course",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "aiCodeReviewer.reviewSelection",
+        "title": "AI: Review Selected Code"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "aiCodeReviewer.reviewSelection",
+          "when": "editorHasSelection",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Code Reviewer",
+      "properties": {
+        "aiCodeReviewer.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Anthropic API key. Leave blank to read ANTHROPIC_API_KEY from the environment instead."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "0.105.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0"
+  }
+}
